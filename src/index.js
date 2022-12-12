@@ -10,5 +10,6 @@ const PORT = process.env.PORT || 3000;
 // we're able to receive the JSON data inside our controller under `req.body`
 app.use(bodyParser.json());
 app.use("/api/v1/workouts", v1WorkoutRouter);
+app.use("/api/v1/records", v1RecordRouter);
 
 app.listen(PORT, () => console.log(`API is listening in port ${PORT}`));

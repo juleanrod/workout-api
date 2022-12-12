@@ -11,7 +11,32 @@ const getAllRecords = (req, res) => {
     }
 }
 
-const getRecord = (res, req) => {
+const getRecordForWorkout = (req, res) => {
+    const {
+        params: { workoutId },
+    } = req;
+
+    if(!workoutId) {
+        res
+            .status(422)
+            .send({
+                status: "FAILED",
+                data: { error: "Parameter '/:workoutId/record' can not be empty" },
+            });
+    }
+    
+    try {
+        const workoutRecord = recordService.getRecordForWorkout(workoutId);
+        res.send({ status: "OK", data: workoutRecord });
+    } catch(error) {
+        res
+            .status(error?.status || 500)
+            .send({ status: "FAILED", data: { error: error?.message || error } });
+    }
+}
+
+const getRecord = (req, res) => {
+    console.log(req);
     const {
         params: { recordId },
     } = req;
@@ -25,7 +50,7 @@ const getRecord = (res, req) => {
             });
     }
     try {
-        const record = workoutService.getOneWorkout(recordId);
+        const record = recordService.getRecord(recordId);
         res.send({ status: "OK", data: record});
     } catch (error) {
         res
@@ -34,7 +59,7 @@ const getRecord = (res, req) => {
     }
 }
 
-const createNewRecord = (res, req) => {
+const createNewRecord = (req, res) => {
     const { body } = req;
     if(!body.id || !body.workout || !body.record) {
         res
@@ -73,8 +98,7 @@ const createNewRecord = (res, req) => {
 
 module.exports = {
     getAllRecords,
+    getRecordForWorkout,
     getRecord,
     createNewRecord,
-    updateRecord,
-    deleteRecord,
 }
