@@ -2,15 +2,34 @@ const DB = require("./db.json");
 const { saveToDatabase } = require("./utils");
 
 const getAllWorkouts = (filterParams) => {
+    console.log(filterParams)
     try {
         let workouts = DB.workouts;
         
         if(filterParams.mode) {
-            return DB.workouts.filter((workout) => {
-                workout.mode.toLowerCase().includes(filterParams.mode);
+            return workouts.filter((workout) => {
+                return workout.mode.toUpperCase().includes(filterParams.mode.toUpperCase());
             });
         }
-        // TODO: Other if-statements will go here for different parameters
+
+        if(filterParams.equipment) {
+            return workouts.filter((workout) => {
+                return workout
+                    .equipment
+                    .includes(filterParams.equipment);
+            });
+        }
+
+        if(filterParams.random) {
+            const randomWorkouts = Array(+filterParams.random).fill(0);
+            const lenData = workouts.length;
+            for (let i = 0; i < randomWorkouts.length; i++) {
+                let randNumber = Math.floor(Math.random() * lenData);
+                randomWorkouts[i] = workouts[randNumber];
+            }
+            return randomWorkouts;
+        }
+
         return workouts;
     } catch (error) {
         throw { status: 500, message: error };
