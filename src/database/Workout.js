@@ -8,7 +8,10 @@ const getAllWorkouts = (filterParams) => {
         
         if(filterParams.mode) {
             return workouts.filter((workout) => {
-                return workout.mode.toUpperCase().includes(filterParams.mode.toUpperCase());
+                return workout
+                    .mode
+                    .toUpperCase()
+                    .includes(filterParams.mode.toUpperCase());
             });
         }
 
