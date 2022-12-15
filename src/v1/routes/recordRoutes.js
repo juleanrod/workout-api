@@ -8,9 +8,9 @@ router.get("/", recordController.getAllRecords);
 
 router.get("/:recordId", recordController.getRecord);
 
-//router.post("/", workoutController.createNewWorkout);
+router.post("/", recordController.createNewRecord);
 
-//router.patch("/:workoutId", workoutController.updateOneWorkout);
+router.patch("/:workoutId", recordController.updateRecord);
 
 //router.delete("/:workoutId", workoutController.deleteOneWorkout);
 

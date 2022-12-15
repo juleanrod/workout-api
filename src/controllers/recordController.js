@@ -36,7 +36,6 @@ const getRecordForWorkout = (req, res) => {
 }
 
 const getRecord = (req, res) => {
-    console.log(req);
     const {
         params: { recordId },
     } = req;
@@ -96,9 +95,33 @@ const createNewRecord = (req, res) => {
 
 }
 
+const updateRecord = (req, res) => {
+    const {
+        body,
+        params: { workoutId },
+    } = req;
+    if (!workoutId) {
+        res
+            .status(400)
+            .send({
+                status: "FAILED",
+                data: { error: "Parameter ':workoutId' can not be empty" },
+            });
+    }
+    try {
+        const updatedWorkout = workoutService.updateWorkout(workoutId, body);
+        res.send({ status: "OK", data: updatedWorkout });
+    } catch (error) {
+        res
+            .status(error?.status || 500)
+            .send({ status: "FAILED", data: { error: error?.message || error } });
+    }
+}
+
 module.exports = {
     getAllRecords,
     getRecordForWorkout,
     getRecord,
     createNewRecord,
+    updateRecord,
 }
