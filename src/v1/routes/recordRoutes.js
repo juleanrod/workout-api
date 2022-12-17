@@ -10,7 +10,7 @@ router.get("/:recordId", recordController.getRecord);
 
 router.post("/", recordController.createNewRecord);
 
-router.patch("/:workoutId", recordController.updateRecord);
+router.patch("/:recordId", recordController.updateRecord);
 
 //router.delete("/:workoutId", workoutController.deleteOneWorkout);
 

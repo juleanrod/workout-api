@@ -51,4 +51,5 @@ module.exports = {
     getRecordForWorkout,
     getAllRecords,
     getRecord,
+    updateRecord,
 };

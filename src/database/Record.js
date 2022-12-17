@@ -74,17 +74,37 @@ const createNewRecord = (newRecord) => {
 
 const updateRecord = (recordId, record) => {
     try {
-        //TODO: check that is updating correctly 12/14/2022
         const recordToUpdate = DB.record.findIndex((oldRecord) => oldRecord.id === record.id) > -1;
-        if (recordToUpdate) {
+        if (!recordToUpdate) {
             throw {
                 status: 400,
-                message: `Workout with the name '${record.i}' already exists`,
+                message: `Record with the id '${recordId}' does not exist`,
             };
         }
-        DB.workouts.push(n);
+        // confirm is actually a new record
+        const parseRecord = (record) => {
+            if(record.includes(":")) {
+                //implies is a time based record, returns array of [mins,secs]
+                const minAndSecs = record.split(' ')[0].split(":").forEach(x => ~x);
+                return minAndSecs;
+            }
+            // otherwise return the rep value
+            return ~record.split(' ')[0];
+
+        }
+        const compareRecords = (record1, record2) => {
+
+        }
+        
+        if( ) {
+            throw {
+                status: 400,
+                message: `Record does not beat previous record [${records[recordToUpdate].record}]`,
+            }
+        }
+        DB.records.push(record);
         saveToDatabase(DB);
-        return newWorkout;
+        return updatedRecord;
     } catch (error) {
         throw { status: error?.status || 500, message: error?.message || error };
     }

@@ -68,7 +68,7 @@ const createNewRecord = (req, res) => {
                 data: {
                     error:
                     `One of the following keys is missing or is empty in request body:\
-                    'id', 'mode', 'equipment', 'exercises', 'trainerTips'`,
+                    'id', 'workout', 'record'`,
                 }
             });
         return;
@@ -98,19 +98,42 @@ const createNewRecord = (req, res) => {
 const updateRecord = (req, res) => {
     const {
         body,
-        params: { workoutId },
+        params: { recordId },
     } = req;
-    if (!workoutId) {
+
+    if (!recordId) {
         res
             .status(400)
             .send({
                 status: "FAILED",
-                data: { error: "Parameter ':workoutId' can not be empty" },
+                data: { error: "Parameter ':recordId' can not be empty" },
             });
+        return;
     }
+
+    if(!body.id || !body.workout || !body.record) {
+        res
+            .status(400)
+            .send({
+                status: "FAILED",
+                data: {
+                    error:
+                    `One of the following keys is missing or is empty in request body:\
+                    'id', 'workout', 'record'`,
+                }
+            });
+        return;
+    }
+
+    const toUpdateRecord = {
+        id: body.id,
+        workout: body.workout,
+        record: body.record,
+    }
+
     try {
-        const updatedWorkout = workoutService.updateWorkout(workoutId, body);
-        res.send({ status: "OK", data: updatedWorkout });
+        const updatedRecord = recordService.updateRecord(recordId, toUpdateRecord);
+        res.send({ status: "OK", data: updatedRecord });
     } catch (error) {
         res
             .status(error?.status || 500)
