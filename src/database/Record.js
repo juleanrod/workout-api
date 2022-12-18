@@ -87,7 +87,7 @@ const updateRecord = (recordId, record) => {
         const parseRecord = (r) => {
             if(r.includes(":")) {
                 //implies is a time based record, returns array of [mins,secs]
-                const minAndSecs = r.split(' ')[0].split(":").forEach(x => ~x);
+                const minAndSecs = r.split(' ')[0].split(':');
                 return minAndSecs;
             }
             // otherwise return the rep [value]
@@ -95,8 +95,9 @@ const updateRecord = (recordId, record) => {
 
         }
         const compareRecords = (record1, record2) => {
-            record1_parsed = parseRecord(record1);
-            record2_parsed = parseRecord(record2);
+            record1_parsed = parseRecord(record1).map(v => +v);
+            record2_parsed = parseRecord(record2).map(v => +v);
+
             if(record1_parsed.length === 2 && record2_parsed.length === 2) {
                 if(record1_parsed[0] > record2_parsed[0]) {
                     return false;
