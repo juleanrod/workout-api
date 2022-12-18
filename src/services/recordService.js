@@ -38,8 +38,8 @@ const createNewRecord = (newRecord) => {
 
 const updateRecord = (recordId, record) => {
     try {
-        const record = Record.updateRecord(recordId, record);
-        return record;
+        const updatedRecord = Record.updateRecord(recordId, record);
+        return updatedRecord;
     } catch (error) {
         throw error;
     }
@@ -51,5 +51,6 @@ module.exports = {
     getRecordForWorkout,
     getAllRecords,
     getRecord,
+    createNewRecord,
     updateRecord,
 };
