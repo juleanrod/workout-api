@@ -12,6 +12,6 @@ router.post("/", recordController.createNewRecord);
 
 router.put("/:recordId", recordController.updateRecord);
 
-//router.delete("/:workoutId", workoutController.deleteOneWorkout);
+router.delete("/:recordId", recordController.deleteRecord);
 
 module.exports = router;
