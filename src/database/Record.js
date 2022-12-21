@@ -124,6 +124,23 @@ const updateRecord = (recordId, record) => {
     }
 }
 
+const deleteRecord = (recordId) => {
+    try {
+        const indexForDeletion = DB.records.findIndex(
+            (record) => record.id === recordId 
+        );
+        if (indexForDeletion === -1) {
+            throw {
+                status: 400,
+                message: `Can't find record with the id '${recordId}'`,
+            };
+        }
+        DB.records.splice(indexForDeletion, 1);
+        saveToDatabase(DB);
+    } catch (error) {
+        throw { status: error?.status || 500, message: error?.message || error };
+    }
+};
 
 module.exports = { 
     getAllRecords,
@@ -131,4 +148,5 @@ module.exports = {
     getRecord,
     createNewRecord,
     updateRecord,
+    deleteRecord
 };
