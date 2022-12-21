@@ -141,10 +141,34 @@ const updateRecord = (req, res) => {
     }
 }
 
+const deleteRecord = (req, res) => {
+
+    const {
+        params: { recordId },
+    } = req;
+    if (!recordId) {
+        res
+            .status(400)
+            .send({
+                status: "FAILED",
+                data: { error: "Parameter ':recordId' can not be empty" },
+            });
+    }
+    try {
+        recordService.deleteRecord(recordId);
+        res.status(204).send({ status: "OK" });
+    } catch (error) {
+        res
+            .status(error?.status || 500)
+            .send({ status: "FAILED", data: { error: error?.message || error } });
+    }
+}
+
 module.exports = {
     getAllRecords,
     getRecordForWorkout,
     getRecord,
     createNewRecord,
     updateRecord,
+    deleteRecord
 }
