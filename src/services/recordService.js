@@ -45,7 +45,13 @@ const updateRecord = (recordId, record) => {
     }
 }
 
-
+const deleteRecord = (recordId) => {
+    try {
+        Record.deleteRecord(recordId);
+    } catch (error) {
+        throw error;
+    }
+};
 
 module.exports = { 
     getRecordForWorkout,
@@ -53,4 +59,5 @@ module.exports = {
     getRecord,
     createNewRecord,
     updateRecord,
+    deleteRecord
 };
