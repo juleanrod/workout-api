@@ -1,4 +1,3 @@
-const { v4: uuid } = require("uuid");
 const Workout = require("../database/Workout");
 
 const getAllWorkouts = (filterParams) => {
@@ -22,7 +21,7 @@ const getOneWorkout = (workoutId) => {
 const createNewWorkout = (newWorkout) => {
     const workoutToInsert = {
         ...newWorkout,
-        id: uuid(),
+        id: crypto.randomUUID(),
         createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
         updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
     };

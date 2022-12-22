@@ -29,7 +29,11 @@ const getRecord = (recordId) => {
 
 const createNewRecord = (newRecord) => {
     try {
-        const record = Record.createNewRecord();
+        newRecord = {
+            id: crypto.randomUUID(),
+            ...newRecord,
+        }
+        const record = Record.createNewRecord(newRecord);
         return record;
     } catch (error) {
         throw error;

@@ -8,7 +8,6 @@ specifiers:
   openapi-types: '>=7'
   swagger-jsdoc: ^6.2.5
   swagger-ui-express: ^4.6.0
-  uuid: ^9.0.0
 
 dependencies:
   apicache: 1.6.3
@@ -17,7 +16,6 @@ dependencies:
   openapi-types: 12.1.0
   swagger-jsdoc: 6.2.5_openapi-types@12.1.0
   swagger-ui-express: 4.6.0_express@4.18.2
-  uuid: 9.0.0
 
 devDependencies:
   nodemon: 2.0.20
@@ -796,11 +794,6 @@ packages:
   /utils-merge/1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
-    dev: false
-
-  /uuid/9.0.0:
-    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
-    hasBin: true
     dev: false
 
   /validator/13.7.0:

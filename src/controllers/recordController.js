@@ -60,21 +60,20 @@ const getRecord = (req, res) => {
 
 const createNewRecord = (req, res) => {
     const { body } = req;
-    if(!body.id || !body.workout || !body.record) {
+    if(!body.workout || !body.record) {
         res
             .status(400)
             .send({
                 status: "FAILED",
                 data: {
                     error:
-                    `One of the following keys is missing or is empty in request body:\
-                    'id', 'workout', 'record'`,
+                    `One of the following keys is missing or is empty in request body: \
+                    'workout', 'record'`,
                 }
             });
         return;
     }
     const newRecord = {
-        id: body.id,
         workout: body.workout,
         record: body.record,
     }
