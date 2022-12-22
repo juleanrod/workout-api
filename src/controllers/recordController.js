@@ -73,13 +73,13 @@ const createNewRecord = (req, res) => {
             });
         return;
     }
-    const newRecord = {
+    const tempRecord = {
         workout: body.workout,
         record: body.record,
     }
 
     try {
-        const recordCreated = recordService.createNewRecord(newRecord);
+        const recordCreated = recordService.createNewRecord(tempRecord);
         res
             .status(201)
             .send({

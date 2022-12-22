@@ -58,11 +58,11 @@ const getRecord = (recordId) => {
 const createNewRecord = (newRecord) => {
     try {
         const isAlreadyAdded =
-            DB.records.findIndex((record) => record.name === newRecord.name) > -1;
+            DB.records.findIndex((record) => record.workout === newRecord.workout) > -1;
         if (isAlreadyAdded) {
             throw {
                 status: 400,
-                message: `Workout with the name '${newWorkout.name}' already exists`,
+                message: `Record for workout with id '${newRecord.workout}' already exists`,
             };
         }
         DB.records.push(newRecord);

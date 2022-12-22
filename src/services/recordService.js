@@ -1,4 +1,5 @@
 const Record = require("../database/Record");
+const crypto = require("node:crypto");
 
 const getRecordForWorkout = (workoutId) => {
     try {
@@ -27,11 +28,11 @@ const getRecord = (recordId) => {
     }
 }
 
-const createNewRecord = (newRecord) => {
+const createNewRecord = (tempRecord) => {
     try {
-        newRecord = {
+        const newRecord = {
             id: crypto.randomUUID(),
-            ...newRecord,
+            ...tempRecord,
         }
         const record = Record.createNewRecord(newRecord);
         return record;

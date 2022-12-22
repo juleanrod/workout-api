@@ -1,4 +1,5 @@
 const Workout = require("../database/Workout");
+const crypto = require("crypto");
 
 const getAllWorkouts = (filterParams) => {
     try {
