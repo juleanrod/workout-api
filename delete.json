@@ -1,0 +1,22 @@
+{
+    "id": "ad75d475-ac57-44f4-a02a-8f6def58ff56",
+    "workout": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+    "record": "160 reps"
+},
+{
+    "name": "Jumping (Not) Made Easy",
+    "mode": "AMRAP 12",
+    "equipment": [
+        "jump rope"
+    ],
+    "exercises": [
+        "10 burpees",
+        "25 double-unders"
+    ],
+    "trainerTips": [
+        "Scale to do 50 single-unders, if double-unders are too difficult"
+    ],
+    "id": "8f8318f8-b869-4e9d-bb78-88010193563a",
+    "createdAt": "4/25/2022, 2:45:28 PM",
+    "updatedAt": "4/25/2022, 2:45:28 PM"
+},

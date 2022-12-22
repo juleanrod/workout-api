@@ -47,7 +47,8 @@ const updateRecord = (recordId, record) => {
 
 const deleteRecord = (recordId) => {
     try {
-        Record.deleteRecord(recordId);
+        const confirmation = Record.deleteRecord(recordId);
+        return confirmation;
     } catch (error) {
         throw error;
     }

@@ -155,8 +155,8 @@ const deleteRecord = (req, res) => {
             });
     }
     try {
-        recordService.deleteRecord(recordId);
-        res.status(204).send({ status: "OK" });
+        const confirmation = recordService.deleteRecord(recordId);
+        res.status(200).send({ status: "OK", data: confirmation });
     } catch (error) {
         res
             .status(error?.status || 500)
