@@ -137,7 +137,7 @@ const deleteRecord = (recordId) => {
         }
         DB.records.splice(indexForDeletion, 1);
         saveToDatabase(DB);
-        return `Record id ${recordId} deleted`;
+        return `Record id: ${recordId} deleted`;
     } catch (error) {
         throw { status: error?.status || 500, message: error?.message || error };
     }

@@ -45,7 +45,8 @@ const updateOneWorkout = (workoutId, changes) => {
 
 const deleteOneWorkout = (workoutId) => {
     try {
-        Workout.deleteOneWorkout(workoutId);
+        const confirmation = Workout.deleteOneWorkout(workoutId);
+        return confirmation;
     } catch (error) {
         throw error;
     }

@@ -110,8 +110,8 @@ const deleteOneWorkout = (req, res) => {
             });
     }
     try {
-        workoutService.deleteOneWorkout(workoutId);
-        res.status(204).send({ status: "OK" });
+        const confirmation = workoutService.deleteOneWorkout(workoutId);
+        res.status(200).send({ status: "OK", data: confirmation });
     } catch (error) {
         res
             .status(error?.status || 500)

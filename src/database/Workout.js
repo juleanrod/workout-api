@@ -155,6 +155,7 @@ const deleteOneWorkout = (workoutId) => {
         }
         DB.workouts.splice(indexForDeletion, 1);
         saveToDatabase(DB);
+        return `Workout id: ${workoutId} deleted`;
     } catch (error) {
         throw { status: error?.status || 500, message: error?.message || error };
     }
